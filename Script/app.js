@@ -1,10 +1,14 @@
 const cityForm = document.querySelector("form")
 const card = document.querySelector(".card")
 const details = document.querySelector(".details")
+const time = document.querySelector("img.time")
+const icon = document.querySelector(".icon img")
 // To write the data inside the UI
 const updateUI = function (data) {
-  const cityDets = data.cityDets
-  const weather = data.weather
+  //   const cityDets = data.cityDets
+  //   const weather = data.weather
+  // using destructuring instead of the above syntax
+  const { cityDets, weather } = data
   details.innerHTML = `
   <h5 class="my-3">${cityDets.EnglishName}</h5>
   <div class="my-3">${weather.WeatherText}</div>
@@ -13,7 +17,18 @@ const updateUI = function (data) {
     <span>&deg;C</span>
   </div>
 </div>
+ 
   `
+  // update the day-night and the icons
+  const iconSrc = `img/icon/${weather.WeatherIcon}.svg`
+  icon.setAttribute("src", iconSrc)
+  let timeSrc = null
+  if (weather.IsDayTime) {
+    timeSrc = "img/day.svg"
+  } else {
+    timeSrc = "img/night.svg"
+  }
+  time.setAttribute("src", timeSrc)
   // remove the d-none if presents
   if (card.classList.contains("d-none")) {
     card.classList.remove("d-none")

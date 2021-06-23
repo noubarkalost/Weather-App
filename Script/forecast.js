@@ -1,4 +1,4 @@
-const key = "4Ag4piIkOI1nbRupDYpvQNnqNQs22BGo"
+const key = "PlMG16Nc60AtAVeuijYyvJykFqm9BBXJ"
 
 // First we have to get city information and specifically we need the key returned inside the object
 const getCity = async function (city) {
